@@ -18,6 +18,7 @@ const addextrachapterdata = require('./routes/saveadditionalchapterdataroute')
 const addsection = require('./routes/addsectionroute');
 const addextrasectiondata = require('./routes/saveadditionalsectiondataroute');
 const deletedifficulty = require('./routes/deletedifficultyroute');
+const deletechapter = require('./routes/deletechapterroute');
 const app = express();
 app.use(cors());
 app.use(morgan("tiny"))
@@ -43,3 +44,4 @@ app.use('/saveadditionalchapterdata', addextrachapterdata);
 app.use('/addsection', addsection);
 app.use('/saveadditionalsectiondata', addextrasectiondata);
 app.use('/deletedifficulty', deletedifficulty);
+app.use('/deletechapter', deletechapter);
