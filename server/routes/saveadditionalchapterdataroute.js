@@ -3,7 +3,8 @@ const dbcon = require('../dbconf/dbconfig');
 const router = express.Router();
 const checkduplicatechapter = require('../middlewares/checkifchapterexists');
 const checkduplicatequestion = require('../middlewares/checkifquestionexists');
-router.post('/', checkduplicatechapter, checkduplicatequestion, (req, res) => {
+const checkdupesection = require('../middlewares/checkifsectionexists');
+router.post('/', checkduplicatechapter, checkduplicatequestion, checkdupesection, (req, res) => {
     if (req.status === "chapterexists") {
         return res.send({
             message: "chapter already exists"
@@ -11,6 +12,10 @@ router.post('/', checkduplicatechapter, checkduplicatequestion, (req, res) => {
     } else if (req.status === "questionexists") {
         return res.send({
             message: "question already exists"
+        })
+    } else if (req.status === "sectionexists") {
+        return res.send({
+            message: "section already exists"
         })
     } else {
         const { difficulty, subject, chapter, section, question, option1, option2, option3, option4, answer, explanation } = req.body;
