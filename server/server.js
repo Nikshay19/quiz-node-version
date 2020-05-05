@@ -10,6 +10,8 @@ const displaychapter = require('./routes/displaychaproute');
 const displaysection = require('./routes/displaysectionroute');
 const displayqac = require('./routes/displayqacroute');
 const modifyrecords = require('./routes/modifydisplayedqacroute');
+const deleterecords = require('./routes/deleterecordsroute');
+const checkdataexists = require('./routes/checkiftheparticularsubjectexistsroute')
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 3000;
@@ -27,3 +29,5 @@ app.use('/displaychapter', displaychapter);
 app.use('/displaysection', displaysection);
 app.use('/displayqac', displayqac);
 app.use('/modifyrecords', modifyrecords);
+app.use('/deleterecords', deleterecords);
+app.use('/checkifdataexists', checkdataexists);
