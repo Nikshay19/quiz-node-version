@@ -8,16 +8,21 @@ $(document).on("click", "#sub", e => {
         },
         dataType: "JSON",
         success: function(data) {
-            $(".retall").html(data.output);
-            $(".subtitle").html(subject_to_display);
-            var collapselist = document.getElementsByClassName("collapse");
-            for (var i = 0; i < collapselist.length; i++) {
-                collapselist[i].setAttribute("id", "collapseExample" + i);
+            if (data.status === "exists") {
+                $(".retall").html(data.output);
+                $(".subtitle").html(subject_to_display);
+                var collapselist = document.getElementsByClassName("collapse");
+                for (var i = 0; i < collapselist.length; i++) {
+                    collapselist[i].setAttribute("id", "collapseExample" + i);
+                }
+                var collapsebtnlist = document.getElementsByClassName("abc");
+                for (var i = 0; i < collapsebtnlist.length; i++) {
+                    collapsebtnlist[i].setAttribute("href", "#collapseExample" + i);
+                }
+            } else {
+                $(".retall").html(data.message);
             }
-            var collapsebtnlist = document.getElementsByClassName("abc");
-            for (var i = 0; i < collapsebtnlist.length; i++) {
-                collapsebtnlist[i].setAttribute("href", "#collapseExample" + i);
-            }
+
         }
     });
 });
