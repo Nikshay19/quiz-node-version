@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
+const morgan = require('morgan')
 const cors = require('cors');
 const adminroute = require('./routes/adminroute');
 const datainsertionroute = require('./routes/insertquizdataroute');
@@ -12,8 +13,13 @@ const displayqac = require('./routes/displayqacroute');
 const modifyrecords = require('./routes/modifydisplayedqacroute');
 const deleterecords = require('./routes/deleterecordsroute');
 const checkdataexists = require('./routes/checkiftheparticularsubjectexistsroute')
+const addextrachapter = require('./routes/addchapterroute');
+const addextrachapterdata = require('./routes/saveadditionalchapterdataroute')
+const addsection = require('./routes/addsectionroute');
+const addextrasectiondata = require('./routes/saveadditionalsectiondataroute');
 const app = express();
 app.use(cors());
+app.use(morgan("tiny"))
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`App running on port ${port} `)
@@ -31,3 +37,7 @@ app.use('/displayqac', displayqac);
 app.use('/modifyrecords', modifyrecords);
 app.use('/deleterecords', deleterecords);
 app.use('/checkifdataexists', checkdataexists);
+app.use('/addchapter', addextrachapter);
+app.use('/saveadditionalchapterdata', addextrachapterdata);
+app.use('/addsection', addsection);
+app.use('/saveadditionalsectiondata', addextrasectiondata);

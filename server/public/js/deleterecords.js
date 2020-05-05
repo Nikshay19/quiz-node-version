@@ -2,9 +2,18 @@ $(document).on("click", "#delbtn", e => {
     var extractdelchap = $(e.currentTarget).attr("data-chap").trim(" ");
     var extractdelsec = $(e.currentTarget).attr("data-sec").trim(" ");
     var extractdeldif = $(e.currentTarget).attr("data-dif").trim(" ");
-    var extractqacid = $(e.currentTarget).closest(".qaccollapse").attr("id").trim(" ");
-    var extractdelchapdivid = $(e.currentTarget).closest(".difcol").attr("id").trim(" ");
-    var extractdelsecdivid = $(e.currentTarget).closest(".seccollapse").attr("id").trim(" ");
+    var extractqacid = $(e.currentTarget)
+        .closest(".qaccollapse")
+        .attr("id")
+        .trim(" ");
+    var extractdelchapdivid = $(e.currentTarget)
+        .closest(".difcol")
+        .attr("id")
+        .trim(" ");
+    var extractdelsecdivid = $(e.currentTarget)
+        .closest(".seccollapse")
+        .attr("id")
+        .trim(" ");
     var subject = $(".subtitle").text().trim(" ");
     var delid = $(e.currentTarget).attr("data-id").trim(" ");
     $.ajax({
@@ -51,7 +60,7 @@ $(document).on("click", "#delbtn", e => {
                                             dataType: "JSON",
                                             success: function(data) {
                                                 if (data.status === "exists") {
-                                                    console.log("1110")
+                                                    console.log("1110");
                                                     $("#" + extractdelsecdivid).html(data.output);
                                                     $("#" + extractdelsecdivid).append(
                                                         ' <br> <a class="btn btn-outline-secondary addxtrasec" id="addsectionbtn" data-dif=' +
@@ -64,7 +73,10 @@ $(document).on("click", "#delbtn", e => {
                                                         "additionalsection"
                                                     );
                                                     for (var i = 0; i < exseccollapselist.length; i++) {
-                                                        exseccollapselist[i].setAttribute("id", "addextrasection" + i);
+                                                        exseccollapselist[i].setAttribute(
+                                                            "id",
+                                                            "addextrasection" + i
+                                                        );
                                                     }
                                                     var exseccollapsebtn = document.getElementsByClassName(
                                                         "addxtrasec"
@@ -94,7 +106,6 @@ $(document).on("click", "#delbtn", e => {
                                                         );
                                                     }
                                                 } else {
-
                                                     $.ajax({
                                                         type: "POST",
                                                         url: "http://localhost:3000/displaychapter",
@@ -108,22 +119,30 @@ $(document).on("click", "#delbtn", e => {
                                                             if (data.status === "exists") {
                                                                 $("#" + extractdelchapdivid).html(data.output);
                                                                 $("#" + extractdelchapdivid).append(
-                                                                    ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id=' +
+                                                                    ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id="' +
                                                                     extractdeldif +
-                                                                    ' data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
+                                                                    '" data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
                                                                 );
 
                                                                 var excollapselist = document.getElementsByClassName(
                                                                     "addxtrachap"
                                                                 );
-                                                                for (var i = 0; i < excollapselist.length; i++) {
-                                                                    excollapselist[i].setAttribute("href", "#addextrachapter" + i);
+                                                                for (
+                                                                    var i = 0; i < excollapselist.length; i++
+                                                                ) {
+                                                                    excollapselist[i].setAttribute(
+                                                                        "href",
+                                                                        "#addextrachapter" + i
+                                                                    );
                                                                 }
                                                                 var excollapsebtn = document.getElementsByClassName(
                                                                     "additionalchapter"
                                                                 );
                                                                 for (var i = 0; i < excollapsebtn.length; i++) {
-                                                                    excollapsebtn[i].setAttribute("id", "addextrachapter" + i);
+                                                                    excollapsebtn[i].setAttribute(
+                                                                        "id",
+                                                                        "addextrachapter" + i
+                                                                    );
                                                                 }
 
                                                                 var collapselist = document.getElementsByClassName(
@@ -138,7 +157,9 @@ $(document).on("click", "#delbtn", e => {
                                                                 var collapsebtnlist = document.getElementsByClassName(
                                                                     "sectioncoll"
                                                                 );
-                                                                for (var i = 0; i < collapsebtnlist.length; i++) {
+                                                                for (
+                                                                    var i = 0; i < collapsebtnlist.length; i++
+                                                                ) {
                                                                     collapsebtnlist[i].setAttribute(
                                                                         "href",
                                                                         "#collapseSection" + i
@@ -207,9 +228,6 @@ $(document).on("click", "#delbtn", e => {
                                     }
                                 }
                             });
-
-
-
                         }
                     }
                 });
