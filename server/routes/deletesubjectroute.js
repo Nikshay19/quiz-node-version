@@ -6,7 +6,6 @@ router.post('/', (req, res) => {
     const { subject } = req.body;
     const delete_difficulty_query = 'DELETE FROM quiz_data WHERE sub="' + subject + '"';
     dbcon.query(delete_difficulty_query, (err, result) => {
-        console.log(result);
         if (result.affectedRows > 0) {
             return res.send({
                 "status": "deleted"

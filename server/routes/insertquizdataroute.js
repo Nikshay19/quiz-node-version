@@ -12,6 +12,7 @@ router.post('/', checkifdataexists, (req, res) => {
     const insertQuery = "INSERT INTO quiz_data (difficulty,sub,chapter,section,question,option1,option2,option3,option4,answer,explanation) VALUES ('" + difficulty + "','" + subject + "','" + chapter + "','" + section + "','" + question + "','" + option1 + "','" + option2 + "','" + option3 + "','" + option4 + "','" + answer + "','" + explanation + "')";
     dbcon.query(insertQuery, function(err, result) {
         if (err) {
+            console.log(err);
             return err;
         } else {
             return res.send({

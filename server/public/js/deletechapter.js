@@ -46,9 +46,9 @@ $(function() {
                                             if (data.status === "exists") {
                                                 $("#" + extractdiv).html(data.output);
                                                 $("#" + extractdiv).append(
-                                                    ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id=' +
+                                                    ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id="' +
                                                     predif +
-                                                    ' data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
+                                                    '" data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
                                                 );
 
                                                 var excollapselist = document.getElementsByClassName(

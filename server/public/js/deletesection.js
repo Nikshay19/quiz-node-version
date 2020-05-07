@@ -52,11 +52,7 @@ $(function() {
                                                 console.log("1110")
                                                 $("#" + extractsecdiv).html(data.output);
                                                 $("#" + extractsecdiv).append(
-                                                    ' <br> <a class="btn btn-outline-secondary addxtrasec" id="addsectionbtn" data-dif=' +
-                                                    secdif +
-                                                    " data-chap=" +
-                                                    getchap +
-                                                    ' data-toggle="collapse" href="#addextrasection" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 175px;position: relative;left: 154px;">+</a><br> <div class="additionalsection"  id="addextrasection">  </div>'
+                                                    ' <br> <a class="btn btn-outline-secondary addxtrasec" id="addsectionbtn" data-dif="' + secdif + '" data-chap="' + getchap + '" data-toggle="collapse" href="#addextrasection" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 175px;position: relative;left: 154px;">+</a><br> <div class="additionalsection"  id="addextrasection">  </div>'
                                                 );
                                                 var exseccollapselist = document.getElementsByClassName(
                                                     "additionalsection"
@@ -106,9 +102,9 @@ $(function() {
                                                         if (data.status === "exists") {
                                                             $("#" + getsecchapdiv).html(data.output);
                                                             $("#" + getsecchapdiv).append(
-                                                                ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id=' +
+                                                                ' <br> <a class="btn btn-outline-warning addxtrachap" id="addchapterbtn" data-id="' +
                                                                 predif +
-                                                                ' data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
+                                                                '" data-toggle="collapse" href="#addextrachapter" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 238px;position: relative;left: 122px;">+</a><br> <div class="additionalchapter"  id="addextrachapter">  </div>'
                                                             );
 
                                                             var excollapselist = document.getElementsByClassName(

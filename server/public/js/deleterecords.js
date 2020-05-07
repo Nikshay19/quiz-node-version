@@ -63,11 +63,11 @@ $(document).on("click", "#delbtn", e => {
                                                     console.log("1110");
                                                     $("#" + extractdelsecdivid).html(data.output);
                                                     $("#" + extractdelsecdivid).append(
-                                                        ' <br> <a class="btn btn-outline-secondary addxtrasec" id="addsectionbtn" data-dif=' +
+                                                        ' <br> <a class="btn btn-outline-secondary addxtrasec" id="addsectionbtn" data-dif="' +
                                                         extractdeldif +
-                                                        " data-chap=" +
+                                                        '" data-chap="' +
                                                         extractdelchap +
-                                                        ' data-toggle="collapse" href="#addextrasection" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 175px;position: relative;left: 154px;">+</a><br> <div class="additionalsection"  id="addextrasection">  </div>'
+                                                        '" data-toggle="collapse" href="#addextrasection" role="button" aria-expanded="false" aria-controls="collapseExample"  style="width: 175px;position: relative;left: 154px;">+</a><br> <div class="additionalsection"  id="addextrasection">  </div>'
                                                     );
                                                     var exseccollapselist = document.getElementsByClassName(
                                                         "additionalsection"
