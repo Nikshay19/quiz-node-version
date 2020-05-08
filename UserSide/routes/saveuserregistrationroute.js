@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const dbcon = require('../dbconf/dbconfig');
+const jwt = require('jsonwebtoken');
+const localstorage = require('local-storage');
 const check_email_already_exists_middleware = require('../middlewares/checkifemailalreadyexists');
 const saltRounds = 10;
 const router = express.Router();
@@ -17,8 +19,11 @@ router.post('/', check_email_already_exists_middleware, (req, res) => {
                     "message": "error in inserting"
                 })
             } else {
-                return res.json({
-                    "message": "inserted"
+                jwt.sign({ user: email }, process.env.TOKEN_SECRET, (err, token) => {
+                    localstorage.set('access-token', token);
+                    return res.json({
+                        "message": "inserted"
+                    })
                 })
             }
         })

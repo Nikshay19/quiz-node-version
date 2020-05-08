@@ -11,7 +11,7 @@ $(document).on('click', "#signupreg", (e) => {
             email: email,
             pass: pass
         },
-        success: function(data) {
+        success: function(data, textStatus, request) {
             if (data.message === "inserted") {
                 window.location.href = "http://localhost:4000/homepage";
             } else {

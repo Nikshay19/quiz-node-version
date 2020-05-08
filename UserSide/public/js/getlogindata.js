@@ -12,9 +12,7 @@ $(document).on("click", "#login", (e) => {
         success: function(data, textStatus, request) {
             console.log(data)
             if (data.message === "authorised") {
-                const token = request.getResponseHeader('bearer');
-                localStorage.setItem("access-token", token);
-                window.location.href = "http://localhost:4000/homepage?token='" + token + "'"
+                window.location.href = "http://localhost:4000/homepage"
             } else {
                 $('.alertbox').show();
                 $('.alertbox').text("User unauthorised");
