@@ -9,6 +9,7 @@ $(document).on('click', '.dropdown-item', (e) => {
         },
         dataType: "JSON",
         success: function(response) {
+            console.log(response)
             if (!response.output.status) {
                 $('.dataloadcontainer').html(response.output)
             } else {

@@ -15,6 +15,9 @@ router.post('/', token_middleware, (req, res) => {
                     HTMLoutput += output;
                 } else {
                     HTMLoutput = output
+                    return res.json({
+                        output: HTMLoutput
+                    })
                 }
             }
             res.json({
