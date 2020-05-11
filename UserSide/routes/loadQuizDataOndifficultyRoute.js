@@ -10,7 +10,12 @@ router.post('/', token_middleware, (req, res) => {
         dbcon.query(get_all_data, async(err, result) => {
             for (let index = 0; index < result.length; index++) {
                 const output = await getSubData(result[index].sub, difficulty)
-                HTMLoutput += output;
+                var type = typeof output;
+                if (type !== 'object') {
+                    HTMLoutput += output;
+                } else {
+                    HTMLoutput = output
+                }
             }
             res.json({
                 output: HTMLoutput
@@ -29,14 +34,22 @@ function getSubData(res, difficulty) {
         '<h5 class="card-title">' + res + '</h5>';
     return new Promise((resolve, reject) => {
         dbcon.query("select distinct chapter from quiz_data where sub='" + res + "' and difficulty = '" + difficulty + "' ", (err, result) => {
-            for (let index = 0; index < result.length; index++) {
-                renderData += '<h6 class="card-subtitle mb-2 text-muted">' + result[index].chapter + '</h6>';
+            if (result.length > 0) {
+                for (let index = 0; index < result.length; index++) {
+                    renderData += '<h6 class="card-subtitle mb-2 text-muted">' + result[index].chapter + '</h6>';
 
+                }
+                renderData += '</div>' +
+                    '</div>' +
+                    '<span style="display:inline-block; width: 50px;"></span>';
+                resolve(renderData);
+            } else {
+                resolve({
+                    status: 'notfound',
+                    difficulty: difficulty
+                });
             }
-            renderData += '</div>' +
-                '</div>' +
-                '<span style="display:inline-block; width: 50px;"></span>';
-            resolve(renderData);
+
         })
     })
 
