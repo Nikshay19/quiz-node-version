@@ -23,7 +23,7 @@ router.get('/', token_middleware, (req, res) => {
 });
 
 function getSubData(res) {
-    var renderData = '<div class="card" style="width: 18rem;">' +
+    var renderData = '<div class="card" style="width: 18rem; column-count:3;">' +
         '<div class="card-body">' +
         '<h5 class="card-title">' + res + '</h5>';
     return new Promise((resolve, reject) => {
