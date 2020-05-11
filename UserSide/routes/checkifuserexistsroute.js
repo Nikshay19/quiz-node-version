@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
         if (result.length > 0) {
             if (bcrypt.compareSync(pass, result[0].pass) === true) {
                 jwt.sign({ user: result[0].email }, process.env.TOKEN_SECRET, (err, token) => {
-                    localstorage.set("access-token", token);
+                    res.setHeader("access-token", token)
                     res.json({
                         message: "authorised"
                     })

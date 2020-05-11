@@ -11,13 +11,24 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./js/logout.js"></script>
+    <script src="./js/loadData.js"></script>
+    <script src="./js/loaddifficulty.js"></script>
     <title>Whats Quizzin?!</title>
 </head>
 
 <body>
     <div class="jumbotron" style="text-align: center; font-family:cursive ; font-size: large;">Whats Quizzin?!
         <button type="button" class="btn btn-outline-danger" id="logout" style="position: absolute; right: 50px;">Logout</button>
+        <div class="dropdown" style="position: absolute; left: 6px; top: 57px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose Your Difficulty</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Easy</a>
+                <a class="dropdown-item" href="#">Medium</a>
+                <a class="dropdown-item" href="#">Hard</a>
+            </div>
+        </div>
     </div>
+    <div class="container dataloadcontainer" style="  width: 100%; height: auto; margin: auto 0; display: flex; justify-content: center;"></div>
 </body>
 
 </html>

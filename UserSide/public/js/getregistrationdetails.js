@@ -13,7 +13,9 @@ $(document).on('click', "#signupreg", (e) => {
         },
         success: function(data, textStatus, request) {
             if (data.message === "inserted") {
-                window.location.href = "http://localhost:4000/homepage";
+                const token = request.getResponseHeader('access-token');
+                localStorage.setItem("access-token", token);
+                window.location.href = 'http://localhost:4000/homepage?token=' + token + ''
             } else {
                 $('.alertbox').show();
                 $('.alertbox').text("Email already exists")
