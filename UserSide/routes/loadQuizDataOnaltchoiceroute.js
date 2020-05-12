@@ -42,8 +42,13 @@ function getSubData(res, dif) {
         dbcon.query("select distinct chapter from quiz_data where sub='" + res + "' and difficulty = '" + dif + "' ", (err, result) => {
             if (result.length > 0) {
                 for (let index = 0; index < result.length; index++) {
-                    renderData += '<h6 class="card-subtitle mb-2 text-muted">' + result[index].chapter + '</h6>';
-
+                    renderData += '<a class="chapcoll" data-toggle="collapse" href="#chaptercollapse" role="button" aria-expanded="false" aria-controls="collapseExample">' +
+                        '' + result[index].chapter + '' +
+                        '</a>' +
+                        '<div class="collapse chcol" id="chaptercollapse">' +
+                        '<div class="card card-body">' +
+                        '</div>' +
+                        '</div>';
                 }
                 renderData += '</div>' +
                     '</div>' +
@@ -68,8 +73,13 @@ function getAltSubData(sub, dif) {
         dbcon.query("select distinct chapter from quiz_data where sub='" + sub + "' and difficulty = '" + dif + "' ", (err, result) => {
             if (result.length > 0) {
                 for (let index = 0; index < result.length; index++) {
-                    renderData += '<h6 class="card-subtitle mb-2 text-muted">' + result[index].chapter + '</h6>';
-
+                    renderData += '<a class="chapcoll" data-toggle="collapse" href="#chaptercollapse" role="button" aria-expanded="false" aria-controls="collapseExample">' +
+                        '' + result[index].chapter + '' +
+                        '</a>' +
+                        '<div class="collapse chcol" id="chaptercollapse">' +
+                        '<div class="card card-body">' +
+                        '</div>' +
+                        '</div>';
                 }
                 renderData += '</div>' +
                     '</div>' +

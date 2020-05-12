@@ -7,6 +7,14 @@ $(document).ready(function() {
             dataType: "JSON",
             success: function(response) {
                 $('.dataloadcontainer').html(response.output)
+                var getchapcollclass = document.getElementsByClassName('chapcoll');
+                for (var i = 0; i < getchapcollclass.length; i++) {
+                    getchapcollclass[i].setAttribute("href", "#chaptercollapse" + i);
+                }
+                var getchcol = document.getElementsByClassName('chcol');
+                for (var i = 0; i < getchcol.length; i++) {
+                    getchcol[i].setAttribute("id", "chaptercollapse" + i);
+                }
             }
         });
     }, 2000);

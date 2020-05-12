@@ -23,14 +23,19 @@ router.get('/', token_middleware, (req, res) => {
 });
 
 function getSubData(res) {
-    var renderData = '<div class="card" style="width: 18rem; column-count:3;">' +
+    var renderData = '<div class="card subdatacard" id="asd" style="width: 18rem; column-count:3;">' +
         '<div class="card-body">' +
         '<h5 class="card-title">' + res + '</h5>';
     return new Promise((resolve, reject) => {
         dbcon.query("select distinct chapter from quiz_data where sub='" + res + "' and difficulty = 'easy' ", (err, result) => {
             for (let index = 0; index < result.length; index++) {
-                renderData += '<h6 class="card-subtitle mb-2 text-muted">' + result[index].chapter + '</h6>';
-
+                renderData += '<a class="chapcoll" data-toggle="collapse" id="chapterbtn" href="#chaptercollapse" data-dif="easy" data-sub="' + res + '" data-chap="' + result[index].chapter + '" role="button" aria-expanded="false" aria-controls="collapseExample">' +
+                    '<li>' + '' + result[index].chapter + '' + '</li>' + '<br>' +
+                    '</a>' +
+                    '<div class="collapse chcol" id="chaptercollapse">' +
+                    '<div class="card card-body">' +
+                    '</div>' +
+                    '</div>';
             }
             renderData += '</div>' +
                 '</div>' +

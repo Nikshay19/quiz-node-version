@@ -9,6 +9,9 @@ const checkuserexists = require('./routes/checkifuserexistsroute');
 const loadData = require('./routes/loadQuizDataOnLoginRoute');
 const loadDataBasedOnDifficulty = require('./routes/loadQuizDataOndifficultyRoute');
 const loadaltdata = require('./routes/loadQuizDataOnaltchoiceroute');
+const loadSection = require('./routes/getsectionroute');
+const loadquizdata = require('./routes/loadquizdataroute');
+const loadquizquestions = require('./routes/loadquestionsroute');
 const port = process.env.PORT || 4000;
 const app = express();
 app.listen(port, () => {
@@ -25,3 +28,6 @@ app.use('/checkuserexists', checkuserexists);
 app.use('/loadData', loadData);
 app.use('/loadqdataondif', loadDataBasedOnDifficulty);
 app.use('/loaduseralternativechoice', loadaltdata);
+app.use('/getsection', loadSection);
+app.use('/quizitup', loadquizdata);
+app.use('/getquestions', loadquizquestions);
