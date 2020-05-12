@@ -15,6 +15,7 @@ const verifytoken = function verifyToken(req, res, next) {
                 req.status = "not exists"
                 next();
             } else if (decoded.user) {
+                req.getuseremail = decoded
                 req.status = "exists";
                 next();
             } else {

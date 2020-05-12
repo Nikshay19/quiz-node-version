@@ -19,7 +19,6 @@ $(document).ready((e) => {
         },
         dataType: "JSON",
         success: function(response) {
-            console.log(response.output)
             if (response.output) {
                 $('.loadcontainer').html(response.output);
             } else {
