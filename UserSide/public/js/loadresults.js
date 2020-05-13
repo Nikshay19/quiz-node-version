@@ -47,6 +47,8 @@ $(document).ready((e) => {
 
                     chart.draw(data, options);
                 }
+                $('#loadwrong').html(response.output);
+                $('#userchoice').html('<p>do you wish to save your results? <button type="button" id="save" data-qnun="' + response.questionsunanswered + '" data-qnan="' + response.questionsanswered + '" data-qnuntip="' + response.questionsunansweredtooltip + '" data-qnantip="' + response.questionsansweredtooltip + '" data-can="' + response.correctanswers + '" data-wan="' + response.totalquestions + '"  data-cantip="' + response.correctanswerstooltip + '" data-wantip="' + response.wronganswertooltip + '" data-user="' + response.user + '" class="btn btn-primary">Yes</button> <button type="button" id="delete" class="btn btn-danger" data-user="' + response.user + '" style="margin-left:20px;">No</button></p>')
             }
         });
     }
