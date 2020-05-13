@@ -13,7 +13,7 @@ router.post('/', token_middleware, (req, res) => {
         dbcon.query(select_query, (err, result) => {
             if (parseInt(id) === result.length) {
                 res.json({
-                    status: '<a id="checkresults" href="#" style="text-align:center;"><h3>Check Out Your Results</h3></a>'
+                    status: '<a id="checkresults" href="#" style="text-align:center;" data-noqn="' + result.length + '"><h3>Check Out Your Results</h3></a>'
                 })
             } else {
                 for (let index = 0; index < result.length; index++) {

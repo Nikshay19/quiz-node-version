@@ -6,20 +6,25 @@ $(document).on("click", "input[type='radio']", (e) => {
     const getdifficulty = $(e.currentTarget).attr('data-dif');
     const getsection = $(e.currentTarget).attr('data-sec');
     const getquestion = $(e.currentTarget).attr('data-qn');
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:4000/checkanswers?token=" + token + "",
-        data: {
-            subject: getsubject,
-            chapter: getchapter,
-            difficulty: getdifficulty,
-            section: getsection,
-            question: getquestion,
-            selectedoption: selectedoption
-        },
-        dataType: "dataType",
-        success: function(response) {
+    if (!token) {
+        window.location.href = "http://localhost:4000/"
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/checkanswers?token=" + token + "",
+            data: {
+                subject: getsubject,
+                chapter: getchapter,
+                difficulty: getdifficulty,
+                section: getsection,
+                question: getquestion,
+                selectedoption: selectedoption
+            },
+            dataType: "dataType",
+            success: function(response) {
 
-        }
-    });
+            }
+        });
+    }
+
 })

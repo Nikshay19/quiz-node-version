@@ -13,6 +13,8 @@ const loadSection = require('./routes/getsectionroute');
 const loadquizdata = require('./routes/loadquizdataroute');
 const loadquizquestions = require('./routes/loadquestionsroute');
 const checkcorrectanswer = require('./routes/checkanswersroute');
+const loadresults = require('./routes/resultpageroute');
+const displayresults = require('./routes/loadresultroute');
 const port = process.env.PORT || 4000;
 const app = express();
 app.listen(port, () => {
@@ -33,3 +35,5 @@ app.use('/getsection', loadSection);
 app.use('/quizitup', loadquizdata);
 app.use('/getquestions', loadquizquestions);
 app.use('/checkanswers', checkcorrectanswer);
+app.use('/result', loadresults);
+app.use('/loadresults', displayresults);

@@ -39,14 +39,13 @@ function getSubData(res, difficulty) {
         dbcon.query("select distinct chapter from quiz_data where sub='" + res + "' and difficulty = '" + difficulty + "' ", (err, result) => {
             if (result.length > 0) {
                 for (let index = 0; index < result.length; index++) {
-                    renderData += '<a class="chapcoll" data-toggle="collapse" href="#chaptercollapse" role="button" aria-expanded="false" aria-controls="collapseExample">' +
-                        '' + result[index].chapter + '' +
+                    renderData += '<a class="chapcoll" data-toggle="collapse" id="chapterbtn" href="#chaptercollapse" data-dif="' + difficulty + '" data-sub="' + res + '" data-chap="' + result[index].chapter + '" role="button" aria-expanded="false" aria-controls="collapseExample">' +
+                        '<li>' + '' + result[index].chapter + '' + '</li>' + '<br>' +
                         '</a>' +
                         '<div class="collapse chcol" id="chaptercollapse">' +
                         '<div class="card card-body">' +
                         '</div>' +
                         '</div>';
-
                 }
                 renderData += '</div>' +
                     '</div>' +

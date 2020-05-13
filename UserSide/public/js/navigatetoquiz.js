@@ -4,5 +4,9 @@ $(document).on('click', '#sectionlink', (e) => {
     const getchapter = $(e.currentTarget).attr('data-chap');
     const getdifficulty = $(e.currentTarget).attr('data-dif');
     const getsection = $(e.currentTarget).attr('data-sec');
-    window.location.href = "http://localhost:4000/quizitup?token=" + token + "&subject=" + getsubject + "&chapter=" + getchapter + "&difficulty=" + getdifficulty + "&section=" + getsection + "&id=0";
+    if (!token) {
+        window.location.href = "http://localhost:4000/"
+    } else {
+        window.location.href = "http://localhost:4000/quizitup?token=" + token + "&subject=" + getsubject + "&chapter=" + getchapter + "&difficulty=" + getdifficulty + "&section=" + getsection + "&id=0";
+    }
 });
