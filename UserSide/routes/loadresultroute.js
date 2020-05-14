@@ -22,9 +22,9 @@ router.post('/', token_middleware, (req, res) => {
                 const correctanswerpercentage = (correctArr / numberofquestions) * 100
                 for (let index = 0; index < result.length; index++) {
                     if (result[index].selectedoption !== result[index].answer) {
-                        htmlOutput += '<li class="list-group-item lgi">Qusetion: "' + result[index].question + '"<br>' +
-                            'Answer: "' + result[index].answer + '"<br>' +
-                            'Explanation: "' + result[index].explanation + '"' +
+                        htmlOutput += '<li class="list-group-item lgi">Qusetion: ' + result[index].question + '<br>' +
+                            'Answer: ' + result[index].answer + '<br>' +
+                            'Explanation: ' + result[index].explanation + '' +
                             '</li>';
                     }
                 }

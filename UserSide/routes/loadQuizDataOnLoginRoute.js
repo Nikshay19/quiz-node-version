@@ -8,8 +8,14 @@ router.get('/', token_middleware, (req, res) => {
         const get_all_data = "select distinct sub from quiz_data";
         dbcon.query(get_all_data, async(err, result) => {
             for (let index = 0; index < result.length; index++) {
-                const output = await getSubData(result[index].sub)
-                HTMLoutput += output;
+                const checkeasy = await checkifeasyexists(result[index].sub)
+                if (checkeasy !== 'notexists') {
+                    const checkmedium = await checkifmediumexists(checkeasy)
+                    if (checkmedium != 'notexists') {
+                        const output = await getSubData(checkmedium)
+                        HTMLoutput += output;
+                    }
+                }
             }
             res.json({
                 output: HTMLoutput
@@ -45,4 +51,34 @@ function getSubData(res) {
     })
 
 }
+
+function checkifeasyexists(subject) {
+    return new Promise((resolve, reject) => {
+        const check_query = "select * from quiz_data where difficulty='easy' and sub='" + subject + "'";
+        dbcon.query(check_query, (err, result) => {
+            var sub = result[0];
+            if (sub !== undefined) {
+                resolve(sub.sub)
+            } else {
+                resolve('notexists')
+            }
+        })
+    })
+}
+
+function checkifmediumexists(subject) {
+    return new Promise((resolve, reject) => {
+        const check_query = "select * from quiz_data where difficulty='medium' and sub='" + subject + "'";
+        dbcon.query(check_query, (err, result) => {
+            var sub = result[0];
+            if (sub !== undefined) {
+                resolve(sub.sub)
+            } else {
+                resolve('notexists')
+            }
+        })
+    })
+}
+
+
 module.exports = router;

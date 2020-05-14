@@ -15,6 +15,9 @@ const loadquizquestions = require('./routes/loadquestionsroute');
 const checkcorrectanswer = require('./routes/checkanswersroute');
 const loadresults = require('./routes/resultpageroute');
 const displayresults = require('./routes/loadresultroute');
+const saveuserresults = require('./routes/saveuserresultsroute');
+const storedresults = require('./routes/displaystoredresultsroute');
+const loadstoredresults = require('./routes/loadstoredresultsroute');
 const port = process.env.PORT || 4000;
 const app = express();
 app.listen(port, () => {
@@ -37,3 +40,6 @@ app.use('/getquestions', loadquizquestions);
 app.use('/checkanswers', checkcorrectanswer);
 app.use('/result', loadresults);
 app.use('/loadresults', displayresults);
+app.use('/saveuserresults', saveuserresults);
+app.use('/storedresults', storedresults);
+app.use('/loadstoredresults', loadstoredresults);

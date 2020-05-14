@@ -14,6 +14,7 @@ $(document).ready((e) => {
             },
             dataType: "JSON",
             success: async function(response) {
+                console.log(response)
                 google.charts.load('current', { 'packages': ['corechart'] });
                 google.charts.setOnLoadCallback(drawChart);
 
