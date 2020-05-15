@@ -14,13 +14,20 @@ router.post('/', token_middleware, (req, res) => {
 
                     HTMLoutput += output;
                 } else {
-                    const altOutput = await getAltSubData(output.subject, useraltchoice)
-                    var type = typeof altOutput;
-                    if (type !== 'object') {
-                        HTMLoutput += altOutput
-                    } else {
-                        HTMLoutput += altOutput
+                    const checkeasy = await checkifeasyexists(output.subject)
+                    if (checkeasy !== 'notexists') {
+                        const checkmedium = await checkifmediumexists(checkeasy)
+                        if (checkmedium !== 'notexists') {
+                            const altOutput = await getAltSubData(checkmedium, useraltchoice)
+                            var type = typeof altOutput;
+                            if (type !== 'object') {
+                                HTMLoutput += altOutput
+                            } else {
+                                HTMLoutput += altOutput
+                            }
+                        }
                     }
+
                 }
             }
             res.json({
@@ -35,7 +42,7 @@ router.post('/', token_middleware, (req, res) => {
 });
 
 function getSubData(res, dif) {
-    var renderData = '<div class="card" style="width: 18rem;">' +
+    var renderData = '<div class="card" style="width: 18rem; margin: 0 auto; display:inline-block; margin-left: 31px; margin-bottom: 50px;">' +
         '<div class="card-body">' +
         '<h5 class="card-title">' + res + '</h5>';
     return new Promise((resolve, reject) => {
@@ -66,7 +73,7 @@ function getSubData(res, dif) {
 }
 
 function getAltSubData(sub, dif) {
-    var renderData = '<div class="card" style="width: 18rem;">' +
+    var renderData = '<div class="card" style="width: 18rem; margin: 0 auto; display:inline-block; margin-left: 31px; margin-bottom: 50px;">' +
         '<div class="card-body">' +
         '<h5 class="card-title">' + sub + '</h5>';
     return new Promise((resolve, reject) => {
@@ -94,6 +101,34 @@ function getAltSubData(sub, dif) {
         })
     })
 
+}
+
+function checkifeasyexists(subject) {
+    return new Promise((resolve, reject) => {
+        const check_query = "select * from quiz_data where difficulty='easy' and sub='" + subject + "'";
+        dbcon.query(check_query, (err, result) => {
+            var sub = result[0];
+            if (sub !== undefined) {
+                resolve(sub.sub)
+            } else {
+                resolve('notexists')
+            }
+        })
+    })
+}
+
+function checkifmediumexists(subject) {
+    return new Promise((resolve, reject) => {
+        const check_query = "select * from quiz_data where difficulty='medium' and sub='" + subject + "'";
+        dbcon.query(check_query, (err, result) => {
+            var sub = result[0];
+            if (sub !== undefined) {
+                resolve(sub.sub)
+            } else {
+                resolve('notexists')
+            }
+        })
+    })
 }
 
 module.exports = router;

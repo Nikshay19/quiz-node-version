@@ -17,8 +17,9 @@ router.get('/', token_middleware, (req, res) => {
                 for (let i = 0; i < result.length; i++) {
                     const userdata = result[i].userwronganswers.split(',');
                     if (userdata[i] !== undefined) {
-                        htmloutput += '<div class="gchart" id="piechart' + i + '" style="width: 500px; height: 500px; margin-left: 285px;"></div>' +
-                            '<div class="gchart1" id="piechartforcorrect' + i + '" style="width: 500px; height: 500px; margin-left: 713px; margin-top: -489px;"></div>' +
+                        htmloutput += '<h3 style="text-align:center; font-family: cursive;">Quiz taken on ' + result[i].datecreated + '</h3>' +
+                            '<div class="gchart" id="piechart' + i + '" style="width: 500px; height: 500px; margin-left: 109px;"></div>' +
+                            '<div class="gchart1" id="piechartforcorrect' + i + '" style="width: 500px; height: 500px; margin-left: 561px; margin-top: -489px;"></div>' +
                             '<div class="card">' +
                             '<div class="card-body">' +
                             '<ul class="list-group">';
