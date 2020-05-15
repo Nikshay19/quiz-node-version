@@ -18,6 +18,7 @@ const displayresults = require('./routes/loadresultroute');
 const saveuserresults = require('./routes/saveuserresultsroute');
 const storedresults = require('./routes/displaystoredresultsroute');
 const loadstoredresults = require('./routes/loadstoredresultsroute');
+const deleteresult = require('./routes/deletequizresultsroute');
 const port = process.env.PORT || 4000;
 const app = express();
 app.listen(port, () => {
@@ -43,3 +44,4 @@ app.use('/loadresults', displayresults);
 app.use('/saveuserresults', saveuserresults);
 app.use('/storedresults', storedresults);
 app.use('/loadstoredresults', loadstoredresults);
+app.use('/deleteresult', deleteresult);

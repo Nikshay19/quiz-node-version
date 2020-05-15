@@ -16,23 +16,20 @@ router.get('/', token_middleware, (req, res) => {
             } else {
                 for (let i = 0; i < result.length; i++) {
                     const userdata = result[i].userwronganswers.split(',');
-                    if (userdata[i] !== undefined) {
-                        htmloutput += '<h3 style="text-align:center; font-family: cursive;">Quiz taken on ' + result[i].datecreated + '</h3>' +
-                            '<div class="gchart" id="piechart' + i + '" style="width: 500px; height: 500px; margin-left: 109px;"></div>' +
-                            '<div class="gchart1" id="piechartforcorrect' + i + '" style="width: 500px; height: 500px; margin-left: 561px; margin-top: -489px;"></div>' +
-                            '<div class="card">' +
-                            '<div class="card-body">' +
-                            '<ul class="list-group">';
-                        for (let j = 0; j < userdata.length; j++) {
-                            htmloutput += '<li class="list-group-item">' + userdata[j] + '</li>'
-                        }
-                        htmloutput += '</ul>' +
-                            '</div>' +
-                            '</div>' +
-                            '<br>';
-                    } else {
-                        delete obj[i];
+                    console.log(userdata)
+                    htmloutput += '<h3 style="text-align:center; font-family: cursive;">Quiz taken on ' + result[i].datecreated + '</h3>' +
+                        '<div class="gchart" id="piechart' + i + '" style="width: 500px; height: 500px; margin-left: 109px;"></div>' +
+                        '<div class="gchart1" id="piechartforcorrect' + i + '" style="width: 500px; height: 500px; margin-left: 561px; margin-top: -489px;"></div>' +
+                        '<div class="card">' +
+                        '<div class="card-body">' +
+                        '<ul class="list-group">';
+                    for (let j = 0; j < userdata.length; j++) {
+                        htmloutput += '<li class="list-group-item">' + userdata[j] + '</li>'
                     }
+                    htmloutput += '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '<br>';
                 }
                 res.json({
                     output: htmloutput,

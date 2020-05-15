@@ -1,26 +1,24 @@
-$(document).on("click", "#logout", (e) => {
+$(document).on('click', '#delete', function(e) {
     const token = localStorage.getItem('access-token');
     if (!token) {
-        window.location.href = "http://localhost:4000/"
+        window.location.href = 'http://localhost:4000/'
     } else {
+        const getuser = $(e.currentTarget).attr('data-user');
         $.ajax({
             type: "POST",
             url: "http://localhost:4000/deleteresult?token=" + token + "",
+            data: {
+                user: getuser
+            },
             dataType: "JSON",
             success: function(response) {
                 console.log(response)
                 if (response.status === 'deleted') {
-                    localStorage.clear();
-                    window.location.href = "http://localhost:4000/";
-                } else if (response.status === 'notexists') {
-                    localStorage.clear();
-                    window.location.href = "http://localhost:4000/";
+                    window.location.href = 'http://localhost:4000/'
                 } else {
                     alert(response.status)
                 }
             }
         });
-
     }
-
-})
+});

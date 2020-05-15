@@ -8,6 +8,7 @@ $(document).ready(function() {
             url: "http://localhost:4000/loadstoredresults?token=" + token + "",
             dataType: "JSON",
             success: function(response) {
+                console.log(response);
                 $('#loaduserresult').html(response.output)
                 for (let i = 0; i < response.data.length; i++) {
                     if (response !== null) {
