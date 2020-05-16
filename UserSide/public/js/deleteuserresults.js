@@ -14,7 +14,7 @@ $(document).on('click', '#delete', function(e) {
             success: function(response) {
                 console.log(response)
                 if (response.status === 'deleted') {
-                    window.location.href = 'http://localhost:4000/'
+                    window.location.href = 'http://localhost:4000/homepage?token=' + token + ''
                 } else {
                     alert(response.status)
                 }

@@ -9,26 +9,33 @@ router.post('/', token_middleware, (req, res) => {
         const get_all_data = "select distinct sub from quiz_data";
         dbcon.query(get_all_data, async(err, result) => {
             for (let index = 0; index < result.length; index++) {
-                const output = await getSubData(result[index].sub, userprefdif)
-                if (!output.difficulty) {
+                const checkifsubexistseasy = await checkifeasyexists(result[index].sub)
+                if (checkifsubexistseasy !== 'notexists') {
+                    const checkifsubexistsmedium = await checkifmediumexists(checkifsubexistseasy);
+                    if (checkifsubexistsmedium !== 'notexists') {
+                        const output = await getSubData(checkifsubexistsmedium, userprefdif)
+                        if (!output.difficulty) {
 
-                    HTMLoutput += output;
-                } else {
-                    const checkeasy = await checkifeasyexists(output.subject)
-                    if (checkeasy !== 'notexists') {
-                        const checkmedium = await checkifmediumexists(checkeasy)
-                        if (checkmedium !== 'notexists') {
-                            const altOutput = await getAltSubData(checkmedium, useraltchoice)
-                            var type = typeof altOutput;
-                            if (type !== 'object') {
-                                HTMLoutput += altOutput
-                            } else {
-                                HTMLoutput += altOutput
+                            HTMLoutput += output;
+                        } else {
+                            const checkeasy = await checkifeasyexists(output.subject)
+                            if (checkeasy !== 'notexists') {
+                                const checkmedium = await checkifmediumexists(checkeasy)
+                                if (checkmedium !== 'notexists') {
+                                    const altOutput = await getAltSubData(checkmedium, useraltchoice)
+                                    var type = typeof altOutput;
+                                    if (type !== 'object') {
+                                        HTMLoutput += altOutput
+                                    } else {
+                                        HTMLoutput += altOutput
+                                    }
+                                }
                             }
+
                         }
                     }
-
                 }
+
             }
             res.json({
                 output: HTMLoutput
