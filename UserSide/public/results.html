@@ -29,5 +29,16 @@
     <div class="container" id="loadwrong" style="display:flex;"></div>
     <div id="userchoice" style="margin-left: 585px; margin-top: 26px;"></div>
 </body>
+<script>
+    $(document).ready(function() {
+        function disablePrev() {
+            window.history.forward()
+        }
+        window.onload = disablePrev();
+        window.onpageshow = function(evt) {
+            if (evt.persisted) disableBack()
+        }
+    });
+</script>
 
 </html>
