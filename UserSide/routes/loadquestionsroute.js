@@ -53,7 +53,7 @@ router.post('/', token_middleware, (req, res) => {
                             '</div>';
                         htmloutput += ' </div>' +
                             '</div>' +
-                            '<button type="button" name="next" id="nextqn" data-sub="' + subject + '" data-chap="' + chapter + '" data-sec="' + section + '" data-dif="' + difficulty + '" data-id="' + id + '" class="btn btn-primary" btn-lg btn-block" style="position: absolute; top: 407px;right: 776px;">Next</button>';
+                            '<button type="button" name="next" id="nextqn" data-sub="' + subject + '" data-chap="' + chapter + '" data-sec="' + section + '" data-dif="' + difficulty + '" data-id="' + id + '" class="btn btn-primary" btn-lg btn-block" style="position: absolute; top: 432px;right: 776px;">Next</button>';
                         res.json({
                             output: htmloutput
                         })
