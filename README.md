@@ -1,6 +1,6 @@
 # quiz-node-version
 # Add quiz data
-The app is divided into two parts to add quiz data and user side
+### The app is divided into two parts to add quiz data and user side
 The "Add quiz data" allows the user to add quiz topics in a multi layered way, where each quiz topic can have 3 difficulty levels: easy medium and hard. Under each difficulty level there will be a chapter, under each chapter contains sections, under each section there will quiz questions
 To use the AddQuizData, navigate into AddQuizData folder, "Run npm install and run npm run dev"
 # User Side
