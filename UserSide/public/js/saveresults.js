@@ -5,6 +5,10 @@ $(document).on('click', '#save', (e) => {
     } else {
         const listdataArr = [];
         var getlistdata = document.getElementsByClassName('lgi');
+        
+        //checking for sonar cloud
+        if (getlistdata !== '' || getlistdata !== undefined) {
+        }
         if (getlistdata !== '' || getlistdata !== undefined) {
             for (let index = 0; index < getlistdata.length; index++) {
                 listdataArr.push(getlistdata[index].textContent)
