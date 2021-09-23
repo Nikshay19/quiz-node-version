@@ -1,1 +1,3 @@
 node_modules/
+.github/workflows/build.yml
+sonar-project.properties
