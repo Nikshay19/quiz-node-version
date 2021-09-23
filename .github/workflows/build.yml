@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - sample
+      - sample2
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
